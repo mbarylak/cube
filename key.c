@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:39:54 by davgarci          #+#    #+#             */
-/*   Updated: 2023/03/17 19:06:31 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/05/17 20:45:54 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	fdf_init(t_mlx *mlx)
 	mlx->map.width = 0;
 	mlx->map.height = 0;
 	mlx->map.max_alt = 0;
-	mlx->map.xyzc = NULL;
+	mlx->map.map = NULL;
 	mlx->multiplicator = 1;
 	mlx->multi_z = 500;
 	mlx->posX = 2.5; 

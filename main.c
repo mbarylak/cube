@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:30:36 by davgarci          #+#    #+#             */
-/*   Updated: 2023/03/19 10:51:13 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/05/17 21:03:37 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,18 +135,20 @@ void	draw_textures(int x, int drawStart, int drawEnd, t_mlx	*mlx, int side, doub
 
 int	main()
 {
-	
-  t_mlx	mlx;
+	t_mlx	mlx;
+
+	get_map("testmap.cub", &mlx);
+	printf("The map width is %d and its height is %d\n", mlx.map.width, mlx.map.height);
+  //fdf_init(&mlx);  
+  //raycasting(&mlx);
   
-  fdf_init(&mlx);  
-  raycasting(&mlx);
-  
- 
+ /*
 	//mlx_key_hook(mlx.win, ft_input, &mlx);
   mlx_hook(mlx.win, 2, 1L << 0, ft_input, &mlx);
 	//mlx_hook(data->win_ptr, 3, 1L << 1, key_released, data);
 	mlx_hook(mlx.win, 17, 0, hook_exit, &mlx);
 	mlx_loop(mlx.mlx);
+*/
 	
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:34:54 by davgarci          #+#    #+#             */
-/*   Updated: 2023/03/14 18:22:07 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/05/17 20:46:58 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-#include "mlx.h"
+# include "mlx.h"
+# include "gnl/get_next_line.h"
 
 #define mapWidth 24
 #define mapHeight 24
@@ -31,10 +32,10 @@ typedef struct s_map {
 	int		width;
 	int		height;
 	int		max_alt;
-	int		**xyzc;
+	char	**map;
 }	t_map;
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void		*img;
 	char		*addr;
@@ -73,7 +74,9 @@ typedef struct s_mlx {
 	t_map map;
 }	t_mlx;
 
-
+int		error_msg(int i);
+void	get_map(char *file, t_mlx *mlx);
+int		get_map_info(char *file, t_mlx *mlx);
 void	fdf_init(t_mlx *mlx);
 int	hook_exit(t_mlx *mlx);
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
