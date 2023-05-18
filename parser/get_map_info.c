@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:54:34 by mbarylak          #+#    #+#             */
-/*   Updated: 2023/05/18 20:21:44 by mbarylak         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:44:41 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,30 @@ void	get_width(char *line, t_mlx *mlx)
 	}
 }
 
+void	get_player_orientation(char c, t_mlx *mlx)
+{
+	if (c == 'N')
+	{
+		mlx->dirX = -1;
+		mlx->planeY = 0.66;
+	}
+	else if (c == 'S')
+	{
+		mlx->dirX = 1;
+		mlx->planeY = -0.66;
+	}
+	else if (c == 'E')
+	{
+		mlx->dirY = 1;
+		mlx->planeX = 0.66;
+	}
+	else if (c == 'O')
+	{
+		mlx->dirY = -1;
+		mlx->planeX = -0.66;
+	}
+}
+
 int	get_player_pos(t_mlx *mlx)
 {
 	int		i;
@@ -42,6 +66,7 @@ int	get_player_pos(t_mlx *mlx)
 			{
 				if (i <= 0 || j <= 0)
 					return (error_msg(3));
+				get_player_orientation(mlx->map.map[i][j], mlx);
 				mlx->posX = j + 0.5;
 				mlx->posY = i + 0.5;
 				return (0);

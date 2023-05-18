@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:49:29 by mbarylak          #+#    #+#             */
-/*   Updated: 2023/05/18 20:01:23 by mbarylak         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:44:07 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 void	win_init(t_mlx *mlx)
 {
+	mlx->planeX = 0;
+	mlx->planeY = 0;
+	mlx->dirX = 0;
+	mlx->dirY = 0;
+	mlx->teta = 0;
+	mlx->multiplicator = 1;
+	mlx->multi_z = 500;
+	mlx->x = 64;
+	mlx->y = 64;
 	mlx->win_w = screenWidth;
 	mlx->win_h = screenHeight;
 	mlx->mlx = mlx_init();
