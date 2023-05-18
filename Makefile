@@ -6,15 +6,18 @@
 #    By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 20:36:05 by mbarylak          #+#    #+#              #
-#    Updated: 2023/05/17 20:37:46 by mbarylak         ###   ########.fr        #
+#    Updated: 2023/05/18 20:02:23 by mbarylak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cube
 
-SRCS = main.c \
-		error_msg.c get_map_info.c ./gnl/get_next_line.c\
-		key.c raycasting.c \
+PARSER = error_msg get_map_info parser
+GNL = get_next_line
+
+SRCS = $(addsuffix .c, $(addprefix parser/, $(PARSER))) \
+		$(addsuffix .c, $(addprefix gnl/, $(GNL))) \
+		key.c raycasting.c main.c \
 		
 
 OBJS = $(SRCS:.c=.o)

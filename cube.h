@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:34:54 by davgarci          #+#    #+#             */
-/*   Updated: 2023/05/17 20:46:58 by mbarylak         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:03:05 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,19 @@ typedef struct s_mlx {
 	t_map map;
 }	t_mlx;
 
+/* ERROR_MSG */
+
 int		error_msg(int i);
-void	get_map(char *file, t_mlx *mlx);
+
+/* GET_MAP_INFO */
+
 int		get_map_info(char *file, t_mlx *mlx);
+void	get_map(char *file, t_mlx *mlx);
+
+/* PARSER */
+
+void	cube_init(char *file, t_mlx *mlx);
+
 void	fdf_init(t_mlx *mlx);
 int	hook_exit(t_mlx *mlx);
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);

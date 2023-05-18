@@ -6,11 +6,11 @@
 /*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:54:34 by mbarylak          #+#    #+#             */
-/*   Updated: 2023/05/17 21:02:35 by mbarylak         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:21:44 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 void	get_width(char *line, t_mlx *mlx)
 {
@@ -24,6 +24,34 @@ void	get_width(char *line, t_mlx *mlx)
 		if (mlx->map.width < width)
 			mlx->map.width = width;
 	}
+}
+
+int	get_player_pos(t_mlx *mlx)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (mlx->map.map[i])
+	{
+		j = 0;
+		while (mlx->map.map[i][j])
+		{
+			if (mlx->map.map[i][j] == 'N' || mlx->map.map[i][j] == 'S' \
+				|| mlx->map.map[i][j] == 'E' || mlx->map.map[i][j] == 'O')
+			{
+				if (i <= 0 || j <= 0)
+					return (error_msg(3));
+				mlx->posX = j + 0.5;
+				mlx->posY = i + 0.5;
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (error_msg(2));
+
 }
 
 int	get_map_info(char *file, t_mlx *mlx)
@@ -61,7 +89,7 @@ void	get_map(char *file, t_mlx *mlx)
 	if (!get_map_info(file, mlx))
 	{
 		fd = open(file, O_RDONLY);
-		mlx->map.map = malloc(sizeof (char *) * mlx->map.height);
+		mlx->map.map = malloc(sizeof (char *) * mlx->map.height + 1);
 		if (!mlx->map.map)
 			return ;
 		i = 0;
@@ -70,6 +98,8 @@ void	get_map(char *file, t_mlx *mlx)
 			mlx->map.map[i] = get_next_line(fd);
 			i++;
 		}
+		mlx->map.map[i] = NULL;
 		close(fd);
+		get_player_pos(mlx); //esto en un futuro no puede estar aquí
 	}
 }

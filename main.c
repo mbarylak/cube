@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:30:36 by davgarci          #+#    #+#             */
-/*   Updated: 2023/05/17 21:03:37 by mbarylak         ###   ########.fr       */
+/*   Updated: 2023/05/18 20:22:15 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,12 +133,37 @@ void	draw_textures(int x, int drawStart, int drawEnd, t_mlx	*mlx, int side, doub
   }
 }
 
+void	print_map(t_mlx *mlx)
+{
+	int		i;
+	int		j;
+	char	**aux;
+
+	i = 0;
+	aux = mlx->map.map;
+	if (!aux[i])
+		printf("Esta vacio");
+	while (aux[i])
+	{
+		//printf("%s", aux[i]);
+		j = 0;
+		while(aux[i][j])
+		{
+			printf("%c", aux[i][j]);
+			j++;
+		}
+		i++;
+	}
+	printf("\n");
+}
+
 int	main()
 {
 	t_mlx	mlx;
 
-	get_map("testmap.cub", &mlx);
-	printf("The map width is %d and its height is %d\n", mlx.map.width, mlx.map.height);
+	cube_init("testmap.cub", &mlx);
+	print_map(&mlx);
+	printf("la posición del jugador es: [%g, %g]\n", mlx.posX, mlx.posY);
   //fdf_init(&mlx);  
   //raycasting(&mlx);
   
