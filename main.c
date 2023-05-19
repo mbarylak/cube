@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:30:36 by davgarci          #+#    #+#             */
-/*   Updated: 2023/05/18 20:22:15 by mbarylak         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:24:58 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ int	main()
 
 	cube_init("testmap.cub", &mlx);
 	print_map(&mlx);
-	printf("la posición del jugador es: [%g, %g]\n", mlx.posX, mlx.posY);
+	//printf("la posición del jugador es: [%g, %g]\n", mlx.posX, mlx.posY);
   //fdf_init(&mlx);  
   //raycasting(&mlx);
   

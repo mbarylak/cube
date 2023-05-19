@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:34:54 by davgarci          #+#    #+#             */
-/*   Updated: 2023/05/18 20:03:05 by mbarylak         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:58:10 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stddef.h>
 # include <math.h>
 # include "mlx.h"
 # include "gnl/get_next_line.h"
@@ -37,12 +38,19 @@ typedef struct s_map {
 
 typedef struct s_image
 {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_image;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_image;
+
+typedef struct s_color
+{
+	int	red;
+	int	green;
+	int	blue;
+}	t_color;
 
 typedef struct s_mlx {
 	void	*mlx;
@@ -69,10 +77,14 @@ typedef struct s_mlx {
 	t_image	texS;
 	t_image	texE;
 	t_image	texO;
-	int			x;
-	int			y;
-	t_map map;
+	t_color	floor;
+	t_color	ceiling;
+	int		x;
+	int		y;
+	t_map	map;
 }	t_mlx;
+
+/**									PARSER								**/
 
 /* ERROR_MSG */
 
@@ -86,6 +98,8 @@ void	get_map(char *file, t_mlx *mlx);
 /* PARSER */
 
 void	cube_init(char *file, t_mlx *mlx);
+
+/**									EXECUTOR							**/
 
 void	fdf_init(t_mlx *mlx);
 int	hook_exit(t_mlx *mlx);

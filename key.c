@@ -6,7 +6,7 @@
 /*   By: mbarylak <mbarylak@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:39:54 by davgarci          #+#    #+#             */
-/*   Updated: 2023/05/17 20:45:54 by mbarylak         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:39:41 by mbarylak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	hook_exit(t_mlx *mlx)
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 {
 	char	*dst;
-	
+
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
